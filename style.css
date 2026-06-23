@@ -1,0 +1,316 @@
+:root {
+    --bg-main: #f4f6f9;
+    --bg-card: #ffffff;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --text-main: #1f2937;
+    --text-sub: #6b7280;
+    --border: #e5e7eb;
+    --success: #10b981;
+    --success-hover: #059669;
+    --danger: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* Layout Dashboard */
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #111827;
+    color: white;
+    padding: 30px 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.logo span { 
+    color: var(--primary); 
+}
+
+nav { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+/* DESIGN DAS ABAS DE NAVEGAÇÃO */
+.tab-btn {
+    background: none; 
+    border: none; 
+    color: #9ca3af;
+    padding: 14px 20px; 
+    text-align: left; 
+    font-size: 1rem;
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.tab-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.tab-btn.active {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Área de Conteúdo */
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+/* Seção de Destaque - Hero */
+.hero-section {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 35px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 { 
+    font-size: 2.2rem; 
+    margin-bottom: 10px; 
+    font-weight: 700; 
+}
+
+.hero-section p { 
+    color: #94a3b8; 
+    font-size: 1.1rem; 
+    margin-bottom: 20px; 
+    max-width: 700px; 
+}
+
+/* BOTÃO DE DESTAQUE PRINCIPAL (SIMULE AQUI) */
+.btn-hero {
+    background-color: var(--success);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    transition: all 0.2s ease;
+}
+
+.btn-hero:hover {
+    background-color: var(--success-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+.btn-hero:active {
+    transform: translateY(0);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.card h3 { 
+    margin-bottom: 20px; 
+    font-size: 1.3rem; 
+    border-bottom: 2px solid var(--bg-main); 
+    padding-bottom: 10px;
+}
+
+/* Inputs e Seletores */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.input-group label { 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+}
+
+.input-group input, .input-group select {
+    padding: 12px; 
+    border: 1px solid var(--border);
+    border-radius: 6px; 
+    font-size: 1rem; 
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus, .input-group select:focus { 
+    border-color: var(--primary); 
+}
+
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 12px;
+}
+
+/* DESIGN DO BOTÃO DE CALCULAR INTERNO */
+.btn-calc {
+    width: 100%; 
+    background: var(--primary); 
+    color: white;
+    border: none; 
+    padding: 14px; 
+    font-weight: bold;
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-calc:hover { 
+    background: var(--primary-hover); 
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+.btn-calc:active {
+    transform: translateY(0);
+}
+
+/* Abas */
+.tab-content { 
+    display: none; 
+}
+
+.tab-content.active { 
+    display: block; 
+}
+
+/* Resultados e Tabelas */
+.placeholder { 
+    color: var(--text-sub); 
+    text-align: center; 
+    padding: 40px 0; 
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+.tabela-calculo {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 20px;
+}
+
+.tabela-calculo th, .tabela-calculo td {
+    padding: 12px; 
+    text-align: left; 
+    border-bottom: 1px solid var(--border);
+}
+
+.provento { 
+    color: var(--success); 
+    font-weight: 600; 
+    text-align: right; 
+}
+
+.desconto { 
+    color: var(--danger); 
+    font-weight: 600; 
+    text-align: right; 
+}
+
+.resultado-final {
+    background: var(--bg-main); 
+    padding: 20px;
+    border-radius: 8px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 1.2rem; 
+    margin-bottom: 20px;
+}
+
+.resultado-final strong { 
+    color: var(--primary); 
+    font-size: 1.5rem; 
+}
+
+.chart-container {
+    max-width: 300px; 
+    margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .dashboard { 
+        flex-direction: column; 
+    }
+    .sidebar { 
+        width: 100%; 
+        padding: 20px;
+    }
+    .logo {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        width: auto;
+    }
+    .main-content {
+        padding: 20px;
+    }
+    .content-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .hero-section h1 { 
+        font-size: 1.8rem; 
+    }
+}

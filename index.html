@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CalculaCLT Pro | Simulador de Férias, 13º e Rescisão Trabalhista</title>
+    <meta name="description" content="Calcule seus direitos trabalhistas online de forma gratuita. Simulador completo de férias, décimo terceiro salário e rescisão de contrato CLT com descontos de INSS e IRRF.">
+    <meta name="keywords" content="calculadora clt, simular rescisao, calcular ferias, calculo decimo terceiro, direitos trabalhistas, inss, irrf">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="CalculaCLT Pro | Simulador Trabalhista Definitivo">
+    <meta property="og:description" content="Faça a simulação exata de suas Férias, 13º e Rescisão contratual em poucos cliques.">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">CalculaCLT <span>PRO</span></div>
+            <nav>
+                <button type="button" class="tab-btn active" onclick="mudarAba('tab-ferias')">🌴 Férias Completas</button>
+                <button type="button" class="tab-btn" onclick="mudarAba('tab-decimo')">🎄 Décimo Terceiro</button>
+                <button type="button" class="tab-btn" onclick="mudarAba('tab-rescisao')">📄 Rescisão Contratual</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero-section">
+                <h1>Painel de Simulação Trabalhista</h1>
+                <p>Realize cálculos precisos baseados nas regras atualizadas da CLT com deduções automáticas de INSS e IRRF.</p>
+                <button type="button" class="btn-hero" onclick="rolarParaCalculadora()">✨ Simule Aqui Seus Direitos</button>
+            </section>
+
+            <div class="content-grid" id="painel-calculos">
+                <section class="card form-card">
+                    <div id="tab-ferias" class="tab-content active">
+                        <h3>Simular Férias</h3>
+                        <div class="input-group">
+                            <label for="f-salario">Salário Bruto (R$)</label>
+                            <input type="number" id="f-salario" value="3500">
+                        </div>
+                        <div class="input-group">
+                            <label for="f-dias">Dias de Férias a Gozar</label>
+                            <input type="number" id="f-dias" value="30" max="30">
+                        </div>
+                        <div class="input-group checkbox-group">
+                            <input type="checkbox" id="f-abono">
+                            <label for="f-abono">Vender 10 dias (Abono Pecuniário)</label>
+                        </div>
+                        <div class="input-group checkbox-group">
+                            <input type="checkbox" id="f-adianta13">
+                            <label for="f-adianta13">Adiantar 1ª Parcela do 13°</label>
+                        </div>
+                        <button type="button" class="btn-calc" onclick="calcularFeriasPro()">Calcular Férias</button>
+                    </div>
+
+                    <div id="tab-decimo" class="tab-content">
+                        <h3>Simular Décimo Terceiro</h3>
+                        <div class="input-group">
+                            <label for="d-salario">Salário Bruto (R$)</label>
+                            <input type="number" id="d-salario" value="3500">
+                        </div>
+                        <div class="input-group">
+                            <label for="d-meses">Meses Trabalhados no Ano</label>
+                            <input type="number" id="d-meses" value="12" max="12">
+                        </div>
+                        <div class="input-group">
+                            <label for="d-parcela">Parcela</label>
+                            <select id="d-parcela">
+                                <option value="1">1ª Parcela (Sem descontos)</option>
+                                <option value="2">2ª Parcela (Com descontos de INSS/IRRF)</option>
+                                <option value="unica">Parcela Única (Novembro/Dezembro)</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn-calc" onclick="calcularDecimoPro()">Calcular 13° Salário</button>
+                    </div>
+
+                    <div id="tab-rescisao" class="tab-content">
+                        <h3>Simular Rescisão</h3>
+                        <div class="input-group">
+                            <label for="r-salario">Último Salário Bruto (R$)</label>
+                            <input type="number" id="r-salario" value="3500">
+                        </div>
+                        <div class="input-group">
+                            <label for="r-meses">Meses Trabalhados (Contrato Atual)</label>
+                            <input type="number" id="r-meses" value="18">
+                        </div>
+                        <div class="input-group">
+                            <label for="r-motivo">Motivo do Desligamento</label>
+                            <select id="r-motivo">
+                                <option value="sem-justa">Dispensa Sem Justa Causa</option>
+                                <option value="pedido">Pedido de Demissão</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="r-aviso">Aviso Prévio</label>
+                            <select id="r-aviso">
+                                <option value="indenizado">Indenizado pelo Empregador</option>
+                                <option value="trabalhado">Trabalhado</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn-calc" onclick="calcularRescisaoPro()">Calcular Rescisão</button>
+                    </div>
+                </section>
+
+                <section class="card result-card">
+                    <h3>Demonstrativo de Valores</h3>
+                    <div id="placeholder-result" class="placeholder">
+                        <p>Insira os dados e clique em calcular para gerar o relatório detalhado.</p>
+                    </div>
+                    
+                    <div id="display-resultados" class="hidden">
+                        <table class="tabela-calculo" id="tabela-linhas">
+                            </table>
+                        
+                        <div class="resultado-final">
+                            <span>Valor Líquido a Receber:</span>
+                            <strong id="valor-liquido">R$ 0,00</strong>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="graficoResultados"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
