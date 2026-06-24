@@ -21,27 +21,27 @@
 <body>
 
     <div class="dashboard">
-        <aside class="sidebar">
+        <aside class="sidebar" aria-label="Barra lateral">
             <div class="logo">CalculaCLT <span>PRO</span></div>
-            <nav>
-                <button type="button" class="tab-btn active" onclick="mudarAba('tab-ferias')">🌴 Férias Completas</button>
-                <button type="button" class="tab-btn" onclick="mudarAba('tab-decimo')">🎄 Décimo Terceiro</button>
-                <button type="button" class="tab-btn" onclick="mudarAba('tab-rescisao')">📄 Rescisão Contratual</button>
+            <nav role="tablist" aria-label="Menu principal">
+                <button id="tab-ferias-btn" role="tab" aria-controls="tab-ferias" aria-selected="true" type="button" class="tab-btn active" onclick="mudarAba('tab-ferias')">🌴 Férias Completas</button>
+                <button id="tab-decimo-btn" role="tab" aria-controls="tab-decimo" aria-selected="false" type="button" class="tab-btn" onclick="mudarAba('tab-decimo')">🎄 Décimo Terceiro</button>
+                <button id="tab-rescisao-btn" role="tab" aria-controls="tab-rescisao" aria-selected="false" type="button" class="tab-btn" onclick="mudarAba('tab-rescisao')">📄 Rescisão Contratual</button>
             </nav>
         </aside>
 
-        <main class="main-content">
+        <main class="main-content" role="main">
             <section class="hero-section">
                 <h1>Painel de Simulação Trabalhista</h1>
                 <p>Realize cálculos precisos baseados nas regras atualizadas da CLT com deduções automáticas de INSS e IRRF.</p>
                 <button type="button" class="btn-hero" onclick="rolarParaCalculadora()">✨ Simule Aqui Seus Direitos</button>
             </section>
 
-            <!-- Seção de Conteúdo Otimizado para AdSense (inserida abaixo da hero-section) -->
-            <section style="font-family: sans-serif; max-width: 600px; margin: 20px auto; padding: 15px; color: #333; line-height: 1.6;">
+            <!-- Seção de Conteúdo Otimizado para AdSense -->
+            <section class="info-section">
 
                 <!-- Bloco de Anúncio Superior (exemplo usando seu data-ad-client) -->
-                <div class="adsense-block" style="text-align: center; margin-bottom: 20px; min-height: 90px; background: #f9f9f9; border: 1px dashed #ccc;">
+                <div class="adsense-block" aria-hidden="true">
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-5467052856983354"
@@ -53,10 +53,10 @@
                     </script>
                 </div>
 
-                <h2 style="color: #1a237e; font-size: 22px; border-bottom: 2px solid #3f51b5; padding-bottom: 5px;">Como Funciona o Cálculo de Férias pela CLT?</h2>
+                <h2>Como Funciona o Cálculo de Férias pela CLT?</h2>
                 <p>Todo trabalhador brasileiro contratado sob o regime da CLT (Consolidação das Leis do Trabalho) tem direito a um período de descanso anual após cumprir 12 meses de trabalho.</p>
                 
-                <h3 style="color: #283593; font-size: 18px; margin-top: 15px;">O que é descontado no valor das férias?</h3>
+                <h3>O que é descontado no valor das férias?</h3>
                 <p>Assim como no salário mensal, o valor recebido nas férias sofre incidência de descontos obrigatórios, tais como:</p>
                 <ul>
                     <li><strong>INSS:</strong> A contribuição previdenciária calculada de forma progressiva sobre o valor total do salário de férias mais o terço constitucional.</li>
@@ -64,7 +64,7 @@
                 </ul>
 
                 <!-- Bloco de Anúncio Meio de Conteúdo (exemplo) -->
-                <div class="adsense-block" style="text-align: center; margin: 25px 0; min-height: 250px; background: #f9f9f9; border: 1px dashed #ccc;">
+                <div class="adsense-block large" aria-hidden="true">
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-5467052856983354"
@@ -76,14 +76,14 @@
                     </script>
                 </div>
 
-                <h2 style="color: #1a237e; font-size: 22px; border-bottom: 2px solid #3f51b5; padding-bottom: 5px; margin-top: 25px;">Por que usar o Simulador Trabalhista CalculaCLT?</h2>
+                <h2>Por que usar o Simulador Trabalhista CalculaCLT?</h2>
                 <p>Realizar esses cálculos manualmente pode ser complexo devido às tabelas progressivas do INSS e do IRRF que mudam constantemente. O <strong>CalculaCLT PRO</strong> foi desenvolvido para facilitar esse processo e fornecer estimativas rápidas e confiáveis.</p>
 
             </section>
 
             <div class="content-grid" id="painel-calculos">
                 <section class="card form-card">
-                    <div id="tab-ferias" class="tab-content active">
+                    <div id="tab-ferias" class="tab-content active" role="tabpanel" aria-labelledby="tab-ferias-btn">
                         <h3>Simular Férias</h3>
                         <div class="input-group">
                             <label for="f-salario">Salário Bruto (R$)</label>
@@ -104,7 +104,7 @@
                         <button type="button" class="btn-calc" onclick="calcularFeriasPro()">Calcular Férias</button>
                     </div>
 
-                    <div id="tab-decimo" class="tab-content">
+                    <div id="tab-decimo" class="tab-content" role="tabpanel" aria-labelledby="tab-decimo-btn">
                         <h3>Simular Décimo Terceiro</h3>
                         <div class="input-group">
                             <label for="d-salario">Salário Bruto (R$)</label>
@@ -125,7 +125,7 @@
                         <button type="button" class="btn-calc" onclick="calcularDecimoPro()">Calcular 13° Salário</button>
                     </div>
 
-                    <div id="tab-rescisao" class="tab-content">
+                    <div id="tab-rescisao" class="tab-content" role="tabpanel" aria-labelledby="tab-rescisao-btn">
                         <h3>Simular Rescisão</h3>
                         <div class="input-group">
                             <label for="r-salario">Último Salário Bruto (R$)</label>
