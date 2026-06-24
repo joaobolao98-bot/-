@@ -76,14 +76,14 @@
 
             </section>
 
-            <!-- Moved tabs close to the simulator for quicker access -->
-            <div class="inline-tabs" role="tablist" aria-label="Escolha de simulação">
-                <button id="tab-ferias-btn" role="tab" aria-controls="tab-ferias" aria-selected="true" type="button" class="tab-btn active" onclick="mudarAba('tab-ferias')">🌴 Férias</button>
-                <button id="tab-decimo-btn" role="tab" aria-controls="tab-decimo" aria-selected="false" type="button" class="tab-btn" onclick="mudarAba('tab-decimo')">🎄 13º</button>
-                <button id="tab-rescisao-btn" role="tab" aria-controls="tab-rescisao" aria-selected="false" type="button" class="tab-btn" onclick="mudarAba('tab-rescisao')">📄 Rescisão</button>
-            </div>
-
             <div class="content-grid" id="painel-calculos">
+                <!-- Vertical side tabs next to the simulator -->
+                <div class="side-tabs-vertical" role="tablist" aria-label="Escolha de simulação">
+                    <button id="tab-ferias-btn" role="tab" aria-controls="tab-ferias" aria-selected="true" type="button" class="tab-btn active" onclick="mudarAba('tab-ferias')">🌴</button>
+                    <button id="tab-decimo-btn" role="tab" aria-controls="tab-decimo" aria-selected="false" type="button" class="tab-btn" onclick="mudarAba('tab-decimo')">🎄</button>
+                    <button id="tab-rescisao-btn" role="tab" aria-controls="tab-rescisao" aria-selected="false" type="button" class="tab-btn" onclick="mudarAba('tab-rescisao')">📄</button>
+                </div>
+
                 <section class="card form-card">
                     <div id="tab-ferias" class="tab-content active" role="tabpanel" aria-labelledby="tab-ferias-btn">
                         <h3>Simular Férias</h3>
