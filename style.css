@@ -144,8 +144,9 @@ nav {
 
 .content-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 30px;
+    grid-template-columns: 64px 1fr 1.2fr; /* side tabs column + form + results */
+    gap: 20px;
+    align-items: start;
 }
 
 .card {
@@ -322,50 +323,65 @@ nav {
     margin: 25px 0;
 }
 
-/* Inline tabs (close to the simulator) */
-.inline-tabs {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
-    margin: 18px 0;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 16px;
-    z-index: 50;
-    background: rgba(255,255,255,0.96);
-    padding: 8px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
-    border: 1px solid var(--border);
+/* Vertical side tabs */
+.side-tabs-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  position: sticky;
+  top: 80px; /* reduced top for better alignment */
+  z-index: 40;
+  padding: 6px;
+  background: transparent;
+  border-radius: 8px;
 }
 
-.inline-tabs .tab-btn {
-    padding: 8px 12px;
-    font-size: 0.95rem;
-    width: auto;
-    background: transparent;
-    border: 1px solid transparent;
+.side-tabs-vertical .tab-btn {
+  width: 110px;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(16,24,40,0.04);
 }
 
-.inline-tabs .tab-btn.active {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
-    box-shadow: none;
+.side-tabs-vertical .tab-btn .tab-icon { font-size: 1.2rem; }
+.side-tabs-vertical .tab-btn .tab-label { font-weight: 600; }
+
+.side-tabs-vertical .tab-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {
-    .inline-tabs {
-        position: static;
-        top: auto;
-        box-shadow: none;
-        background: transparent;
-        padding: 0;
-        border: none;
-    }
-    .inline-tabs .tab-btn {
-        padding: 8px 10px;
-    }
+  .content-grid {
+    grid-template-columns: 1fr; /* stack columns on mobile */
+  }
+  .side-tabs-vertical {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    order: -1; /* move above formulary */
+    margin-bottom: 12px;
+    background: transparent;
+    padding: 0;
+  }
+  .side-tabs-vertical .tab-btn {
+    width: auto;
+    height: auto;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
 }
 
 /* Footer */
