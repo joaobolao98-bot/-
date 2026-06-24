@@ -1,26 +1,42 @@
 // accessibility + tab state script
 (function(){
   // ensure tabs are keyboard accessible and update aria-selected
-  const tabButtons = document.querySelectorAll('[role="tab"]');
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      tabButtons.forEach(b => { b.setAttribute('aria-selected','false'); b.classList.remove('active'); });
-      const panels = document.querySelectorAll('[role="tabpanel"]');
-      panels.forEach(p => p.classList.remove('active'));
+  const tabButtons = Array.from(document.querySelectorAll('[role="tab"]'));
+  function activateTab(button){
+    tabButtons.forEach(b => { b.setAttribute('aria-selected','false'); b.classList.remove('active'); });
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+    panels.forEach(p => p.classList.remove('active'));
 
-      btn.setAttribute('aria-selected','true');
-      btn.classList.add('active');
-      const panelId = btn.getAttribute('aria-controls');
-      const panel = document.getElementById(panelId);
-      if(panel) panel.classList.add('active');
+    button.setAttribute('aria-selected','true');
+    button.classList.add('active');
+    const panelId = button.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    if(panel) {
+      panel.classList.add('active');
+      // smooth scroll panel into view and focus first field
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const firstInput = panel.querySelector('input, select, button, textarea');
+      if(firstInput) firstInput.focus();
+    }
+  }
+
+  tabButtons.forEach((btn, i) => {
+    btn.addEventListener('click', (e) => {
+      activateTab(btn);
     });
 
     btn.addEventListener('keydown', (e) => {
-      let idx = Array.prototype.indexOf.call(tabButtons, btn);
-      if(e.key === 'ArrowRight') {
+      let idx = tabButtons.indexOf(btn);
+      if(e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         idx = (idx + 1) % tabButtons.length; tabButtons[idx].focus();
-      } else if(e.key === 'ArrowLeft') {
+      } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         idx = (idx - 1 + tabButtons.length) % tabButtons.length; tabButtons[idx].focus();
+      } else if(e.key === 'Home') {
+        tabButtons[0].focus();
+      } else if(e.key === 'End') {
+        tabButtons[tabButtons.length - 1].focus();
+      } else if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); activateTab(btn);
       }
     });
   });
